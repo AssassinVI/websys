@@ -24,12 +24,12 @@ $mail = new PHPMailer();                        // 建立新物件
     $mail->SMTPAuth = true;                         // 設定SMTP需要驗證
 
     $mail->SMTPSecure = "ssl";                      // Gmail的SMTP主機需要使用SSL連線   
-    $mail->Host = "srl.tw";                 // Gmail的SMTP主機        
+    $mail->Host = "repairs.com.tw";                 // Gmail的SMTP主機        
     $mail->Port = 465;                              // Gmail的SMTP主機的port為465      
     $mail->CharSet = "utf-8";                       // 設定郵件編碼   
     $mail->Encoding = "base64";
     $mail->WordWrap = 50;                           // 每50個字元自動斷行
-    $mail->Username = "server@srl.tw";     // 設定驗證帳號        
+    $mail->Username = "service@repairs.com.tw";     // 設定驗證帳號        
     $mail->Password = "1qazXSW@3";              // 設定驗證密碼        
     $mail->From = $set_mail;                 // 設定寄件者信箱        
     $mail->FromName = $set_name;                 // 設定寄件者姓名        
