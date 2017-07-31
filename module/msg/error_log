@@ -1,0 +1,56 @@
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Deprecated:  Function eregi() is deprecated in /home/fmtoto/public_html/newsite/sys/core/inc/phpmailer/class.phpmailer.php on line 592
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 42
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 47
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 54
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 59
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 68
+[30-Dec-2016 10:13:23 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 87
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Deprecated:  Function eregi() is deprecated in /home/fmtoto/public_html/newsite/sys/core/inc/phpmailer/class.phpmailer.php on line 592
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 42
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 47
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 54
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 59
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 68
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 76
+[30-Dec-2016 10:20:13 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 87
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Deprecated:  Function eregi() is deprecated in /home/fmtoto/public_html/newsite/sys/core/inc/phpmailer/class.phpmailer.php on line 592
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 43
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 48
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 55
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 60
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 69
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: backMsg_readyonly in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 77
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 77
+[30-Dec-2016 10:30:01 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 89
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Deprecated:  Function eregi() is deprecated in /home/fmtoto/public_html/newsite/sys/core/inc/phpmailer/class.phpmailer.php on line 592
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 43
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 48
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 55
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 60
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 69
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: backMsg_readyonly in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 77
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 77
+[30-Dec-2016 10:30:15 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 89
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 46
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 51
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 58
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 63
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 72
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: backMsg_readyonly in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 80
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 80
+[30-Dec-2016 10:39:48 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 92
+[16-Jan-2017 11:31:54 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[16-Jan-2017 11:31:54 Asia/Taipei] PHP Deprecated:  Function eregi() is deprecated in /home/fmtoto/public_html/newsite/sys/core/inc/phpmailer/class.phpmailer.php on line 592
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 46
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 51
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 58
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 63
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 72
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: backMsg_readyonly in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 80
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined variable: row in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 80
+[16-Jan-2017 11:31:55 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/msg/manager.php on line 93

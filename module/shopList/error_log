@@ -1,0 +1,92 @@
+[06-Dec-2016 18:05:22 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:05:22 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 28
+[06-Dec-2016 18:05:22 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 101
+[06-Dec-2016 18:07:23 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:07:23 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 30
+[06-Dec-2016 18:07:23 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 103
+[06-Dec-2016 18:18:01 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:18:01 Asia/Taipei] PHP Notice:  Undefined index: check in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 22
+[06-Dec-2016 18:18:01 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[06-Dec-2016 18:18:01 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 118
+[06-Dec-2016 18:18:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:18:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[06-Dec-2016 18:18:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 118
+[06-Dec-2016 18:18:32 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:18:32 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[06-Dec-2016 18:18:32 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 118
+[06-Dec-2016 18:18:39 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[06-Dec-2016 18:18:39 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[06-Dec-2016 18:18:39 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 118
+[07-Dec-2016 09:27:09 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[07-Dec-2016 09:27:09 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[07-Dec-2016 09:27:09 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 120
+[07-Dec-2016 09:27:18 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[07-Dec-2016 09:27:18 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[07-Dec-2016 09:27:18 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 120
+[07-Dec-2016 09:27:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[07-Dec-2016 09:27:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[07-Dec-2016 09:27:25 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 120
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Warning:  Missing argument 2 for pdo_select(), called in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 9 and defined in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 77
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Notice:  Undefined variable: where in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 82
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Notice:  Undefined variable: where in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 83
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Warning:  array_keys() expects parameter 1 to be array, null given in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 83
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Notice:  Undefined variable: where in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 84
+[07-Dec-2016 09:53:02 Asia/Taipei] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: no parameters were bound in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 88
+[07-Dec-2016 09:54:37 Asia/Taipei] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 88
+[07-Dec-2016 09:54:47 Asia/Taipei] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 88
+[07-Dec-2016 11:26:26 Asia/Taipei] PHP Notice:  Array to string conversion in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 85
+[07-Dec-2016 11:26:26 Asia/Taipei] PHP Notice:  Array to string conversion in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 85
+[07-Dec-2016 11:26:26 Asia/Taipei] PHP Notice:  Array to string conversion in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 85
+[07-Dec-2016 13:12:24 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:12:24 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:12:24 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:12:24 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:12:29 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:12:29 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:20:23 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:20:23 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:20:23 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:20:23 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:27:02 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 50
+[07-Dec-2016 13:27:02 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 50
+[07-Dec-2016 13:27:02 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 50
+[07-Dec-2016 13:27:02 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 50
+[07-Dec-2016 13:27:43 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:27:43 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:29:23 Asia/Taipei] PHP Notice:  Undefined variable: sql in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:29:23 Asia/Taipei] PHP Fatal error:  Call to a member function fetch() on null in /home/fmtoto/public_html/newsite/sys/module/shopList/detail_excel.php on line 42
+[07-Dec-2016 13:44:28 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[07-Dec-2016 13:44:28 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[07-Dec-2016 13:44:28 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 131
+[07-Dec-2016 14:02:08 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[07-Dec-2016 14:02:08 Asia/Taipei] PHP Notice:  Undefined index: check in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 22
+[07-Dec-2016 14:02:08 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 45
+[07-Dec-2016 14:02:08 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 131
+[07-Dec-2016 15:26:52 Asia/Taipei] PHP Notice:  Undefined index: price in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 51
+[07-Dec-2016 15:26:52 Asia/Taipei] PHP Notice:  Undefined index: price in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 51
+[07-Dec-2016 15:26:55 Asia/Taipei] PHP Notice:  Undefined index: price in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 51
+[07-Dec-2016 15:26:55 Asia/Taipei] PHP Notice:  Undefined index: price in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 51
+[07-Dec-2016 15:26:55 Asia/Taipei] PHP Notice:  Undefined index: price in /home/fmtoto/public_html/newsite/sys/module/shopList/detail.php on line 51
+[08-Dec-2016 14:21:42 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:23:45 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:25:49 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:28:33 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:28:34 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:29:27 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:29:28 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:29:30 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:29:38 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:30:36 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:30:36 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:30:49 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:31:26 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:31:27 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[08-Dec-2016 14:31:28 Asia/Taipei] PHP Notice:  Undefined variable: aes_key in /home/fmtoto/public_html/newsite/sys/core/inc/function.php on line 218
+[27-Dec-2016 11:58:07 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[27-Dec-2016 11:58:07 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 125
+[27-Dec-2016 12:00:06 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[27-Dec-2016 12:00:06 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 125
+[27-Dec-2016 12:00:40 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[27-Dec-2016 12:00:40 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 125
+[12-Jan-2017 18:03:55 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/core/page/header02.php on line 183
+[12-Jan-2017 18:03:55 Asia/Taipei] PHP Notice:  Undefined index: MT_id in /home/fmtoto/public_html/newsite/sys/module/shopList/admin.php on line 125
