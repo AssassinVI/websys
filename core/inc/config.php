@@ -4,8 +4,8 @@ require_once 'phpmailer/class.phpmailer.php';
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PDO連線 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 function pdo_conn() {
-	$dbanme = 'srltw_newsite'; //資料庫名稱
-	$user_id = 'srltw_newsite'; //使用者ID
+	$dbanme = 'repairs_newsite'; //資料庫名稱
+	$user_id = 'repairs_newsite'; //使用者ID
 	$user_pwd = '1qazXSW@3'; //使用者密碼
 
 	$dsn = "mysql:host=localhost;dbname=" . $dbanme;
