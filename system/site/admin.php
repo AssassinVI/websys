@@ -1,5 +1,8 @@
 <?php include("../../core/page/header01.php");//載入頁面heaer01?>
  <link rel="stylesheet" type="text/css" href="../../css/jquery.treetable.css">
+ <style type="text/css">
+   tr.expanded:hover, tr.collapsed:hover { background-color: #ccfff6 !important;}
+ </style>
 <?php include("../../core/page/header02.php");//載入頁面heaer02?>
 <?php
  if ($_POST) {
