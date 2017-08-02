@@ -1,21 +1,7 @@
 <?php include("../../core/page/header01.php");//載入頁面heaer01 ?>
-<style type="text/css">
-	.drop_file{ 
-		height: 150px; border: 2px dashed;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    line-height: 7em; }
-
-    .drop_read{ display:inline-block; margin: 5px; }
-    .drop_read p{ width:100%; margin:0px;}
-    .drop_read p button{ padding: 0px 4px; border-radius: 0px; }
-</style>
 <?php include("../../core/page/header02.php");//載入頁面heaer02?>
 <?php 
 if ($_POST) {
-
-
   // ======================== 刪除 ===========================
   	//----------------------- 代表圖刪除 -------------------------------
     if (!empty($_POST['type']) && $_POST['type']=='delete') { 
@@ -23,14 +9,12 @@ if ($_POST) {
     		$param=array('aPic'=>'');
             $where=array('Tb_index'=>$_POST['Tb_index']);
             pdo_update('appArticle', $param, $where);
-
             unlink('../../img/'.$_POST['aPic']);
     	}else{
         //----------------------- 多檔刪除 -------------------------------
     		$sel_where=array('Tb_index'=>$_POST['Tb_index']);
     		$otr_file=pdo_select('SELECT OtherFile FROM appArticle WHERE Tb_index=:Tb_index', $sel_where);
     		$otr_file=explode(',', $otr_file['OtherFile']);
-
     		for ($i=0; $i <count($otr_file)-1 ; $i++) { //比對 
     			 if ($otr_file[$i]!=$_POST['OtherFile']) {
     			 	$new_file.=$otr_file[$i].',';
@@ -41,15 +25,10 @@ if ($_POST) {
     		$param=array('OtherFile'=>$new_file);
             $where=array('Tb_index'=>$_POST['Tb_index']);
             pdo_update('appArticle', $param, $where);
-
     	}
-
        exit();
   	}
-
-
 	if (empty($_POST['Tb_index'])) {//新增
-
 		$Tb_index='article'.date('YmdHis').rand(0,99);
      
      //===================== 代表圖 ========================
@@ -58,8 +37,6 @@ if ($_POST) {
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
       }
-
-
      //===================== 多圖檔 ========================
       if (!empty($_FILES['OtherFile']['name'][0])){
         for ($i=0; $i <count($_FILES['OtherFile']['name']) ; $i++) { 
@@ -69,8 +46,6 @@ if ($_POST) {
          more_other_upload('OtherFile', $i, $Tb_index.'_other_'.$i.'.'.$type[1]);
         }
       }
-
-
 	$param=array(  'Tb_index'=>$Tb_index,
 		              'mt_id'=>$_POST['mt_id'],
 		             'aTitle'=>$_POST['aTitle'],
@@ -89,23 +64,17 @@ if ($_POST) {
 	location_up('admin.php?MT_id='.$_POST['mt_id'],'成功新增');
    }
    else{  //修改
-
    	$Tb_index =$_POST['Tb_index'];
-
       if (!empty($_FILES['aPic']['name'])) {
       	 $type=explode('.', $_FILES['aPic']['name']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
-
         $aPic_param=array('aPic'=>$aPic);
         $aPic_where=array('Tb_index'=>$Tb_index);
         pdo_update('appArticle', $aPic_param, $aPic_where);
       }
-
-
       //-------------------- 多檔上傳 ------------------------------
       if (!empty($_FILES['OtherFile']['name'][0])) {
-
       	$sel_where=array('Tb_index'=>$Tb_index);
       	$now_file =pdo_select("SELECT OtherFile FROM appArticle WHERE Tb_index=:Tb_index", $sel_where);
       	if (!empty($now_file['OtherFile'])) {
@@ -116,13 +85,11 @@ if ($_POST) {
       	}else{
       	   $file_num=0;
       	}
-
       	for ($i=0; $i <count($_FILES['OtherFile']['name']) ; $i++) { 
       	 $type=explode('.', $_FILES['OtherFile']['name'][$i]);
       	 $OtherFile.=$Tb_index.'_other_'.($file_num+$i).'.'.$type[1].',';
          more_other_upload('OtherFile', $i, $Tb_index.'_other_'.($file_num+$i).'.'.$type[1]);
       	}
-
       	$OtherFile=$now_file['OtherFile'].$OtherFile;
       	 
         $OtherFile_param=array('OtherFile'=>$OtherFile);
@@ -148,13 +115,10 @@ if ($_POST) {
 	location_up('admin.php?MT_id='.$_POST['mt_id'],'成功更新');
    }
 }
-
 if ($_GET) {
  	$where=array('Tb_index'=>$_GET['Tb_index']);
  	$row=pdo_select('SELECT * FROM appArticle WHERE Tb_index=:Tb_index', $where);
 }
-
-
 ?>
 
 
@@ -222,18 +186,37 @@ if ($_GET) {
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="OtherFile">相關附件上傳</label>
 							<div class="col-md-10">
-								<div id="drop_image" class="drop_file" ondragover="javascript: dragHandler(event);" ondrop="javascript: drop_image(event);">請將檔案拖曳到這裡!!</div>
+								<input type="file" multiple name="OtherFile[]" class="form-control" id="OtherFile" onchange="file_viewer_load_new(this, '#other_div', 'manager.php', 'OtherFile')">
+								<span class="help-block m-b-none">可批次上傳多個檔</span>
 							</div>
 						</div>
 
-      
-                        <div class="form-group">
-                          <div id="upload_progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
-                          </div>
-                          <label class="col-md-2 control-label" ></label>
-                          <div class="col-md-10 img_div_box"></div>
-                        </div>
-						
+
+
+						<div class="form-group">
+						   <label class="col-md-2 control-label" ></label>
+						   <div id="other_div" class="col-md-10">
+								
+							</div>
+
+							<div class="col-md-10">
+				<?php if(!empty($row['OtherFile'])){
+                                  
+                          $otherFile=explode(',', $row['OtherFile']);
+                          for ($i=0; $i <count($otherFile)-1 ; $i++) { 
+                          	 $other_txt='<div class="file_div" >
+                          	              <p>目前檔案</p>
+                          	               <button type="button" class="one_del_file"> X </button>
+                          	               <img id="one_img" src="../../other_file/'.$otherFile[$i].'" alt="">
+                          	               <input type="hidden" value="'.$otherFile[$i].'">
+                          	             </div>';
+                          	 echo $other_txt;
+                          }
+                        }
+			    ?>
+			            </div>
+
+						</div>
 
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="YoutubeUrl">嵌入youtube連結</label>
@@ -254,7 +237,7 @@ if ($_GET) {
 				</div><!-- /.panel-body -->
 			</div><!-- /.panel -->
 
- 
+
 
 
 		</div>
@@ -291,8 +274,6 @@ if ($_GET) {
           $("#submit_btn").click(function(event) {
           	 $('#put_form').submit();
           });
-
-
     //------------------------------ 刪圖 ---------------------------------
           $("#one_del_img").click(function(event) { 
 			if (confirm('是否要刪除圖檔?')) {
@@ -305,8 +286,6 @@ if ($_GET) {
                $("#img_div").html('');
 			}
 		});
-
-
       //------------------------------ 刪檔 ---------------------------------
           $(".one_del_file").click(function(event) { 
 			if (confirm('是否要刪除檔案?')) {
@@ -319,73 +298,7 @@ if ($_GET) {
                $(this).parent().html('');
 			}
 		});
-
-
-    $('.img_div_box').on('click', '.drop_del_btn', function(event) {
-    	event.preventDefault();
-    	$(this).parent().parent().remove();
-    	objForm.delete('images'+$(this).attr('index'));
-    	console.log('images'+$(this).attr('index'));
-    	for (var val of objForm.values()) {
-    		console.log(val);
-    	}
-    	
-    });
-
       });
-
-
-
-  //------------------------------ 拖曳上傳(缺少上傳功能) --------------------------------
-       
-       var objXhr           = new XMLHttpRequest() ;
-	   var objForm          = new FormData() ;
-       var index=0; //刪除圖片定位直
-       var file_index=0; ////圖片定位直
-
-function drop_image(e){
-  e.preventDefault() ;
-    var upload_image     = document.getElementById('drop_image') ;
-    var elProgress       = document.getElementById('upload_progress') ;
-    var files            = e.dataTransfer.files ;
-    var sucess_count     = 0 ;
-
-    for (var i=0; i<files.length; i++){
-    	var fr=new FileReader();
-    	fr.onload=openfile;
-    	fr.readAsDataURL(files[i]);
-    	
-         //新增上傳檔案，上傳後名稱為 images+數值
-        objForm.append('images'+file_index, files[i]) ;
-        file_index++;
-        
-    }
-    
-}
-
-  //---------- 預覽圖片 -----------
-function openfile(evt) {
-	var img = evt.target.result;
-	$('.img_div_box').append('<div class="drop_read"><p ><button class="drop_del_btn btn btn-danger" type="button" index="'+index+'">Ｘ</button></p><img style="width: 150px;" src="'+img+'"></div>');
-	index++;
-}
-
-function dragHandler(e)
-{
-	e.preventDefault() ;
-    var upload_image = document.getElementById('drop_image') ;
-    var elProgress = document.getElementById('upload_progress') ;
-    
-    if (!upload_image.className.match('dragover'))
-    {
-        upload_image.className = upload_image.className + ' dragover' ;
-    }
-    
-    if (upload_progress.style.width != '0%')
-    {
-        upload_progress.style.width = '0%' ;
-    }
-}
 </script>
 <?php  include("../../core/page/footer02.php");//載入頁面footer02.php?>
 
