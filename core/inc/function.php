@@ -233,4 +233,15 @@ function test_input($GET)
   }
 }
 
+
+//---------------------------------- email 驗證 ------------------------------------------
+function test_mail($mail)
+{
+  if (preg_match("/^\w+((-\w+)|(\.\w+))*\@\w+((\.|-)\w+)*\.[A-Za-z]+$/", $mail)) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
 ?>
