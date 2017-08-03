@@ -42,7 +42,7 @@ if ($_POST) {
 		exit();
 	}
 	//----------------GOOGLE recaptcha 驗證程式 --------------------*
-
+    
 	$where = array("admin_id" => $_POST['admin_id'], "admin_pwd" => aes_encrypt($aes_key, $_POST['admin_pwd']));
 	$admin = pdo_select("SELECT Tb_index, admin_per, name FROM sysAdmin WHERE admin_id=:admin_id AND admin_pwd=:admin_pwd AND is_use='1'", $where);
 
