@@ -33,17 +33,34 @@ if ($_POST) {
      
      //===================== 代表圖 ========================
       if (!empty($_FILES['aPic']['name'])){
+
+      	if (preg_match('/^.+\.(jpg|png|gif)$/i', $_FILES['aPic']['name'])) {
       	 $type=explode('.', $_FILES['aPic']['name']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
+      	}
+      	else{
+          location_up('admin.php?MT_id='.$_POST['mt_id'],'圖檔錯誤!請上傳圖片檔');
+          exit();
+      	}
+      	 
       }
      //===================== 多圖檔 ========================
       if (!empty($_FILES['OtherFile']['name'][0])){
+
+      	
         for ($i=0; $i <count($_FILES['OtherFile']['name']) ; $i++) { 
-        	
-         $type=explode('.', $_FILES['OtherFile']['name'][$i]);
-      	 $OtherFile.=$Tb_index.'_other_'.$i.'.'.$type[1].',';
-         more_other_upload('OtherFile', $i, $Tb_index.'_other_'.$i.'.'.$type[1]);
+
+           if (preg_match('/^.+\.(jpg|png|gif|doc|docx|xls|xlsx|ppt|pptx|pdf)$/i', $_FILES['OtherFile']['name'][$i])){
+
+             $type=explode('.', $_FILES['OtherFile']['name'][$i]);
+      	     $OtherFile.=$Tb_index.'_other_'.$i.'.'.$type[1].',';
+             more_other_upload('OtherFile', $i, $Tb_index.'_other_'.$i.'.'.$type[1]);
+      	   }
+      	   else{
+      	   	 location_up('admin.php?MT_id='.$_POST['mt_id'],'檔案錯誤!請上傳正確檔案');
+             exit();
+      	   }
         }
       }
 	$param=array(  'Tb_index'=>$Tb_index,
@@ -65,13 +82,25 @@ if ($_POST) {
    }
    else{  //修改
    	$Tb_index =$_POST['Tb_index'];
+
+   	 //===================== 代表圖 ========================
       if (!empty($_FILES['aPic']['name'])) {
+
+      	if (preg_match('/^.+\.(jpg|png|gif)$/i', $_FILES['aPic']['name'])){
+
       	 $type=explode('.', $_FILES['aPic']['name']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
         $aPic_param=array('aPic'=>$aPic);
         $aPic_where=array('Tb_index'=>$Tb_index);
         pdo_update('appArticle', $aPic_param, $aPic_where);
+
+        }
+        else{
+
+         location_up('admin.php?MT_id='.$_POST['mt_id'],'圖檔錯誤!請上傳圖片檔');
+         exit();
+        }
       }
       //-------------------- 多檔上傳 ------------------------------
       if (!empty($_FILES['OtherFile']['name'][0])) {
@@ -86,10 +115,20 @@ if ($_POST) {
       	   $file_num=0;
       	}
       	for ($i=0; $i <count($_FILES['OtherFile']['name']) ; $i++) { 
-      	 $type=explode('.', $_FILES['OtherFile']['name'][$i]);
-      	 $OtherFile.=$Tb_index.'_other_'.($file_num+$i).'.'.$type[1].',';
-         more_other_upload('OtherFile', $i, $Tb_index.'_other_'.($file_num+$i).'.'.$type[1]);
+
+      		 if (preg_match('/^.+\.(jpg|png|gif|doc|docx|xls|xlsx|ppt|pptx|pdf)$/i', $_FILES['OtherFile']['name'][$i])){
+
+      		 	   $type=explode('.', $_FILES['OtherFile']['name'][$i]);
+      		 	   $OtherFile.=$Tb_index.'_other_'.($file_num+$i).'.'.$type[1].',';
+      		 	   more_other_upload('OtherFile', $i, $Tb_index.'_other_'.($file_num+$i).'.'.$type[1]);
+      		 }
+      		 else{
+
+      		 	location_up('admin.php?MT_id='.$_POST['mt_id'],'檔案錯誤!請上傳正確檔案');
+      		 	exit();
+      		 }
       	}
+
       	$OtherFile=$now_file['OtherFile'].$OtherFile;
       	 
         $OtherFile_param=array('OtherFile'=>$OtherFile);
@@ -141,7 +180,7 @@ if ($_GET) {
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="aPic">代表圖檔</label>
 							<div class="col-md-10">
-								<input type="file" name="aPic" class="form-control" id="aPic" onchange="file_viewer_load_new(this, '#img_box')">
+								<input type="file" name="aPic" class="form-control" accept="image/*" id="aPic" onchange="file_viewer_load_new(this, '#img_box')">
 							</div>
 						</div>
 
