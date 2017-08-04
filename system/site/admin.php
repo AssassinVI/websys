@@ -50,6 +50,7 @@
     <tr>
       <th>名稱</th>
       <th>排序</th>
+      <th>使用模組</th>
       <th>管理</th>
     </tr>
   </thead>
@@ -67,18 +68,18 @@
        
        // -- 單元 --
   	   if ($row['is_data']=='1') { 
-          $site_txt=unit_txt($row['Tb_index'], 'no', $row['MT_Name'], $row['OrderBy'], $weblang);
+          $site_txt=unit_txt($row, $weblang);
 
        // -- 資料夾 --   
         }else{  
-          $site_txt=folder_txt($row['Tb_index'], 'no', $row['MT_Name'], $row['OrderBy'], $weblang);
+          $site_txt=folder_txt($row, $weblang);
 
           // -- 子樹狀 --
            $sql_tree=$pdo->prepare("SELECT * FROM maintable WHERE parent_id=:parent_id ORDER BY OrderBy DESC,Tb_index ASC");
            $sql_tree->execute(array(':parent_id'=>$row['Tb_index']));
            while ($row_tree=$sql_tree->fetch(PDO::FETCH_ASSOC)) {
 
-             $site_txt.=tree_tb($row_tree['Tb_index'], $row_tree['parent_id'], $row_tree['MT_Name'], $row_tree['OrderBy'], $row_tree['is_data'], $weblang);
+             $site_txt.=tree_tb($row_tree, $weblang);
            }
         }
         echo $site_txt;
@@ -87,17 +88,17 @@
   $pdo=NUll;
 
 /* ====================== 子樹狀階層 ====================== */
- function tree_tb($Tb_index, $parent_id, $MT_Name, $OrderBy, $is_data, $weblang)
+ function tree_tb($row, $weblang)
  {
-  	   if ($is_data=='1') { // -- 子單元 --
-          $txt=unit_txt($Tb_index, $parent_id, $MT_Name, $OrderBy, $weblang);
+  	   if ($row['is_data']=='1') { // -- 子單元 --
+          $txt=unit_txt($row, $weblang);
         }else{  // -- 子資料夾 --
-           $txt=folder_txt($Tb_index, $parent_id, $MT_Name, $OrderBy, $weblang);
+           $txt=folder_txt($row, $weblang);
             $pdo=pdo_conn();
             $sql=$pdo->prepare("SELECT * FROM maintable WHERE parent_id=:parent_id ORDER BY OrderBy DESC,Tb_index ASC");
-            $sql->execute(array(':parent_id'=>$Tb_index));
-           while ($row=$sql->fetch(PDO::FETCH_ASSOC)) {
-           	 $txt.=tree_tb($row['Tb_index'], $row['parent_id'], $row['MT_Name'], $row['OrderBy'], $row['is_data'], $weblang);
+            $sql->execute(array(':parent_id'=>$row['Tb_index']));
+           while ($row_sql=$sql->fetch(PDO::FETCH_ASSOC)) {
+           	 $txt.=tree_tb($row_sql, $weblang);
            }
            $pdo=NULL;
         }
@@ -105,28 +106,33 @@
  }
 
 /* ====================== 單元HTML ====================== */
-  function unit_txt($Tb_index, $parent_id, $MT_Name, $OrderBy, $weblang)
+  function unit_txt($row, $weblang)
   {
-  	if ($parent_id!='no') {
-       $txt='<tr data-tt-id="'.$Tb_index.'" data-tt-parent-id="'.$parent_id.'" style="background-color: #FAFAFA">';
+  	if (!empty($row['parent_id'])) {
+       $txt='<tr data-tt-id="'.$row['Tb_index'].'" data-tt-parent-id="'.$row['parent_id'].'" style="background-color: #FAFAFA">';
        $txt.='<td class="parent_td">
-                     <span style="color:#999"><strong><i class="fa fa-file-text "></i> '.$MT_Name.' </strong></span>
+                     <span style="color:#999"><strong><i class="fa fa-file-text "></i> '.$row['MT_Name'].' </strong></span>
                   </td>';
   	}
   	else{
-       $txt='<tr data-tt-id="'.$Tb_index.'" style="background-color: #fff">';
+       $txt='<tr data-tt-id="'.$row['Tb_index'].'" style="background-color: #fff">';
        $txt.='<td class="parent_td">
-                     <span style="color:#179c81"><strong><i class="fa fa-file-text "></i> '.$MT_Name.' </strong></span>
+                     <span style="color:#179c81"><strong><i class="fa fa-file-text "></i> '.$row['MT_Name'].' </strong></span>
                   </td>';
   	}
 
 
-           $txt.= '<td><input type="number" class="sort_in" Tb_index="'.$Tb_index.'" value="'.$OrderBy.'"> </td>';
+           $txt.= '<td><input type="number" class="sort_in" Tb_index="'.$row['Tb_index'].'" value="'.$row['OrderBy'].'"> </td>';
+         
+         $where=array('Tb_index'=>$row['UseModuleID']);
+         $mode=pdo_select("SELECT Mod_name FROM sysModule WHERE Tb_index=:Tb_index", $where);
+
+           $txt.= '<td>'.$mode['Mod_name'].'</td>';
            $txt.= '<td align="right">
-                     <a href="manager_data.php?Tb_index='.$Tb_index.'&parent_id='.$parent_id.'&weblang='.$weblang.'" class="btn btn-white btn-sm">
+                     <a href="manager_data.php?Tb_index='.$row['Tb_index'].'&parent_id='.$row['parent_id'].'&weblang='.$weblang.'" class="btn btn-white btn-sm">
                         <i class="fa fa-pencil-square-o "></i> 修改</a> 
 
-                     <a href="admin.php?Tb_index='.$Tb_index.'" class="btn btn-white btn-sm" onclick="if (!confirm(\'確定要刪除 ['.$MT_Name.'] ?\')) {return false;}">
+                     <a href="admin.php?Tb_index='.$row['Tb_index'].'" class="btn btn-white btn-sm" onclick="if (!confirm(\'確定要刪除 ['.$row['MT_Name'].'] ?\')) {return false;}">
                         <i class="fa fa-trash-o "></i> 刪除</a>
                   </td>
                </tr>';
@@ -134,36 +140,36 @@
   }
 
 /* ====================== 資料夾HTML ====================== */
-  function folder_txt($Tb_index, $parent_id, $MT_Name, $OrderBy, $weblang)
+  function folder_txt($row, $weblang)
   {
-  	if ($parent_id!='no') {
-       $txt='<tr data-tt-id="'.$Tb_index.'" data-tt-parent-id="'.$parent_id.'" style="background-color: #FAFAFA">';
+  	if (!empty($row['parent_id'])) {
+       $txt='<tr data-tt-id="'.$row['Tb_index'].'" data-tt-parent-id="'.$row['parent_id'].'" style="background-color: #FAFAFA">';
        $txt.='<td class="parent_td">
-                     <span style="color:#999"><strong><i class="fa fa-folder-open "></i> '.$MT_Name.' </strong></span>
+                     <span style="color:#999"><strong><i class="fa fa-folder-open "></i> '.$row['MT_Name'].' </strong></span>
                   </td>';
   	}
   	else{
-       $txt='<tr data-tt-id="'.$Tb_index.'" style="background-color: #fff">';
+       $txt='<tr data-tt-id="'.$row['Tb_index'].'" style="background-color: #fff">';
        $txt.='<td class="parent_td">
-                     <span style="color:#179c81"><strong><i class="fa fa-folder-open "></i> '.$MT_Name.' </strong></span>
+                     <span style="color:#179c81"><strong><i class="fa fa-folder-open "></i> '.$row['MT_Name'].' </strong></span>
                   </td>';
   	}
-           $txt.= '<td><input type="number" class="sort_in" Tb_index="'.$Tb_index.'" value="'.$OrderBy.'"> </td>';
-
+           $txt.= '<td><input type="number" class="sort_in" Tb_index="'.$row['Tb_index'].'" value="'.$row['OrderBy'].'"> </td>';
+           $txt.= '<td></td>';
 
 
            $txt.= '<td align="right">';
           
     if ($_SESSION['admin_per']=='admin') {
 
-         $txt.='<a href="manager.php?parent_id='.$Tb_index.'" class="btn btn-white btn-sm"><i class="fa fa-folder-open-o"></i> 建立子分類</a>';
+         $txt.='<a href="manager.php?parent_id='.$row['Tb_index'].'" class="btn btn-white btn-sm"><i class="fa fa-folder-open-o"></i> 建立子分類</a>';
        }   
-          $txt.='    <a href="manager_data.php?parent_id='.$Tb_index.'" class="btn btn-white btn-sm"><i class="fa fa-file-text-o "></i> 建立單元</a>
+          $txt.='    <a href="manager_data.php?parent_id='.$row['Tb_index'].'" class="btn btn-white btn-sm"><i class="fa fa-file-text-o "></i> 建立單元</a>
 
-                     <a href="manager.php?Tb_index='.$Tb_index.'&parent_id='.$parent_id.'&weblang='.$weblang.'" class="btn btn-white btn-sm">
+                     <a href="manager.php?Tb_index='.$row['Tb_index'].'&parent_id='.$row['parent_id'].'&weblang='.$weblang.'" class="btn btn-white btn-sm">
                         <i class="fa fa-pencil-square-o "></i> 修改</a> 
 
-                     <a href="admin.php?Tb_index='.$Tb_index.'" class="btn btn-white btn-sm" onclick="if (!confirm(\'確定要刪除 ['.$MT_Name.'] ?\')) {return false;}">
+                     <a href="admin.php?Tb_index='.$row['Tb_index'].'" class="btn btn-white btn-sm" onclick="if (!confirm(\'確定要刪除 ['.$row['MT_Name'].'] ?\')) {return false;}">
                         <i class="fa fa-trash-o "></i> 刪除</a>
                   </td>
                </tr>';
