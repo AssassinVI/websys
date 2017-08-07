@@ -244,4 +244,26 @@ function test_mail($mail)
   }
 }
 
+
+//----------------------------------- 驗證圖片 ---------------------------------
+function test_img($img)
+{
+  if (preg_match('/^.+\.(jpg|png|gif)$/i', $img)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+
+//----------------------------------- 驗證其他檔案 ---------------------------------
+function test_file($file)
+{
+  if (preg_match('/^.+\.(jpg|png|gif|doc|docx|xls|xlsx|ppt|pptx|pdf)$/i', $file)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 ?>

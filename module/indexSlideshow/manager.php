@@ -43,9 +43,16 @@ if ($_POST) {
      
      //===================== 背景圖 ========================
       if (!empty($_FILES['back_img']['name'])){
-      	 $type=explode('.', $_FILES['back_img']['name']);
-      	 $back_img=$Tb_index.'.'.$type[1];
-         fire_upload('back_img', $back_img);
+
+      	if (test_img($_FILES['back_img']['name'])){
+      		 $type=explode('.', $_FILES['back_img']['name']);
+      		 $back_img=$Tb_index.'.'.$type[1];
+      		 fire_upload('back_img', $back_img);
+      	}else{
+      		location_up('admin.php?MT_id='.$_POST['mt_id'],'圖檔錯誤!請上傳圖片檔');
+      		exit();
+      	}
+      	 
          
       }else{
       	 $back_img='';
@@ -77,15 +84,24 @@ if ($_POST) {
    else{  //修改
 
    	$Tb_index =$_POST['Tb_index'];
+    
 
+    //------------------------ 背景圖 -------------------------
       if (!empty($_FILES['back_img']['name'])) {
-      	 $type=explode('.', $_FILES['back_img']['name']);
-      	 $back_img=$Tb_index.'.'.$type[1];
-         fire_upload('back_img', $back_img);
 
-        $back_img_param=array('back_img'=>$back_img);
-        $back_img_where=array('Tb_index'=>$Tb_index);
-        pdo_update('indexSlideshow', $back_img_param, $back_img_where);
+      	if (test_img($_FILES['back_img']['name'])){
+      			 $type=explode('.', $_FILES['back_img']['name']);
+      			 $back_img=$Tb_index.date('His').'.'.$type[1];
+      		   fire_upload('back_img', $back_img);
+
+      		  $back_img_param=array('back_img'=>$back_img);
+      		  $back_img_where=array('Tb_index'=>$Tb_index);
+      		  pdo_update('indexSlideshow', $back_img_param, $back_img_where);
+      	}else{
+           location_up('admin.php?MT_id='.$_POST['mt_id'],'圖檔錯誤!請上傳圖片檔');
+           exit();
+      	}
+      	 
       }
 
 
