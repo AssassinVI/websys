@@ -3,6 +3,8 @@
     .flot-chart{ height: 250px; }
     .m-b-xl{ margin: 0px; }
     .text-no{ color: #F44336; }
+     .c3 svg{ font-size: 11px; }
+    .c3-legend-item{ font-size: 13px; }
 </style>
 <?php include("../../core/page/header02.php");//載入頁面heaer02?>
 <?php 
@@ -240,6 +242,7 @@ if ($_GET) {
                         
                     },
                     type: 'line',
+                    labels: true
                 },
                 axis:{
                    x:{
