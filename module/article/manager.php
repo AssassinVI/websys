@@ -6,13 +6,13 @@ if ($_POST) {
   	//----------------------- 代表圖刪除 -------------------------------
     if (!empty($_POST['type']) && $_POST['type']=='delete') { 
     	if (!empty($_POST['aPic'])) {
-    		$param=array('aPic'=>'');
-            $where=array('Tb_index'=>$_POST['Tb_index']);
+    		$param=['aPic'=>''];
+            $where=['Tb_index'=>$_POST['Tb_index']];
             pdo_update('appArticle', $param, $where);
             unlink('../../img/'.$_POST['aPic']);
     	}else{
         //----------------------- 多檔刪除 -------------------------------
-    		$sel_where=array('Tb_index'=>$_POST['Tb_index']);
+    		$sel_where=['Tb_index'=>$_POST['Tb_index']];
     		$otr_file=pdo_select('SELECT OtherFile FROM appArticle WHERE Tb_index=:Tb_index', $sel_where);
     		$otr_file=explode(',', $otr_file['OtherFile']);
     		for ($i=0; $i <count($otr_file)-1 ; $i++) { //比對 
@@ -22,8 +22,8 @@ if ($_POST) {
     			 	 unlink('../../other_file/'.$_POST['OtherFile']);
     			 }
     		}
-    		$param=array('OtherFile'=>$new_file);
-            $where=array('Tb_index'=>$_POST['Tb_index']);
+    		$param=['OtherFile'=>$new_file];
+            $where=['Tb_index'=>$_POST['Tb_index']];
             pdo_update('appArticle', $param, $where);
     	}
        exit();
@@ -63,20 +63,20 @@ if ($_POST) {
       	   }
         }
       }
-	$param=array(  'Tb_index'=>$Tb_index,
-		              'mt_id'=>$_POST['mt_id'],
-		             'aTitle'=>$_POST['aTitle'],
-		          'aAbstract'=>$_POST['aAbstract'],
-		               'aPic'=>$aPic,
-		          'OtherFile'=>$OtherFile,
-		               'aTXT'=>$_POST['aTXT'],
-		               'aUrl'=>$_POST['aUrl'],
-		         'YoutubeUrl'=>$_POST['YoutubeUrl'],
-		          'StartDate'=>date('Y-m-d'),
-		         'UpdateDate'=>date('Y-m-d'),
-		        'OnLineOrNot'=>$_POST['OnLineOrNot'],
-		            'webLang'=>$weblang
-		          );
+	$param=  ['Tb_index'=>$Tb_index,
+			              'mt_id'=>$_POST['mt_id'],
+			             'aTitle'=>$_POST['aTitle'],
+			          'aAbstract'=>$_POST['aAbstract'],
+			               'aPic'=>$aPic,
+			          'OtherFile'=>$OtherFile,
+			               'aTXT'=>$_POST['aTXT'],
+			               'aUrl'=>$_POST['aUrl'],
+			         'YoutubeUrl'=>$_POST['YoutubeUrl'],
+			          'StartDate'=>date('Y-m-d'),
+			         'UpdateDate'=>date('Y-m-d'),
+			        'OnLineOrNot'=>$_POST['OnLineOrNot'],
+			            'webLang'=>$weblang
+			         ];
 	pdo_insert('appArticle', $param);
 	location_up('admin.php?MT_id='.$_POST['mt_id'],'成功新增');
    }
@@ -91,8 +91,8 @@ if ($_POST) {
       	 $type=explode('.', $_FILES['aPic']['name']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
-        $aPic_param=array('aPic'=>$aPic);
-        $aPic_where=array('Tb_index'=>$Tb_index);
+        $aPic_param=['aPic'=>$aPic];
+        $aPic_where=['Tb_index'=>$Tb_index];
         pdo_update('appArticle', $aPic_param, $aPic_where);
 
         }
@@ -104,7 +104,7 @@ if ($_POST) {
       }
       //-------------------- 多檔上傳 ------------------------------
       if (!empty($_FILES['OtherFile']['name'][0])) {
-      	$sel_where=array('Tb_index'=>$Tb_index);
+      	$sel_where=['Tb_index'=>$Tb_index];
       	$now_file =pdo_select("SELECT OtherFile FROM appArticle WHERE Tb_index=:Tb_index", $sel_where);
       	if (!empty($now_file['OtherFile'])) {
       	   $sel_file=explode(',', $now_file['OtherFile']);
@@ -131,14 +131,14 @@ if ($_POST) {
 
       	$OtherFile=$now_file['OtherFile'].$OtherFile;
       	 
-        $OtherFile_param=array('OtherFile'=>$OtherFile);
-        $OtherFile_where=array('Tb_index'=>$Tb_index);
+        $OtherFile_param=['OtherFile'=>$OtherFile];
+        $OtherFile_where=['Tb_index'=>$Tb_index];
         pdo_update('appArticle', $OtherFile_param, $OtherFile_where);
       }
       	//--------------------------- END -----------------------------------
     
     
-    $param=array(  
+    $param=[  
 		              'mt_id'=>$_POST['mt_id'],
     	             'aTitle'=>$_POST['aTitle'],
 		          'aAbstract'=>$_POST['aAbstract'],
@@ -147,15 +147,15 @@ if ($_POST) {
 		         'YoutubeUrl'=>$_POST['YoutubeUrl'],
 		         'UpdateDate'=>date('Y-m-d'),
 		        'OnLineOrNot'=>$_POST['OnLineOrNot']
-		          );
-    $where=array( 'Tb_index'=>$Tb_index );
+		          ];
+    $where= ['Tb_index'=>$Tb_index] ;
 	pdo_update('appArticle', $param, $where);
 	
 	location_up('admin.php?MT_id='.$_POST['mt_id'],'成功更新');
    }
 }
 if ($_GET) {
- 	$where=array('Tb_index'=>$_GET['Tb_index']);
+ 	$where=['Tb_index'=>$_GET['Tb_index']];
  	$row=pdo_select('SELECT * FROM appArticle WHERE Tb_index=:Tb_index', $where);
 }
 ?>

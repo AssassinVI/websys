@@ -5,8 +5,8 @@ include("../../core/page/header02.php");//載入頁面heaer02?>
 if ($_POST) {
    // -- 更新排序 --
   for ($i=0; $i <count($_POST['OrderBy']) ; $i++) { 
-    $data=array("OrderBy"=>$_POST['OrderBy'][$i]);
-    $where=array("Tb_index"=>$_POST['Tb_index'][$i]);
+    $data=["OrderBy"=>$_POST['OrderBy'][$i]];
+    $where=["Tb_index"=>$_POST['Tb_index'][$i]];
     pdo_update('appArticle', $data, $where);
   }
 }
@@ -15,7 +15,7 @@ if ($_GET) {
 
    if (!empty($_GET['Tb_index'])) {//刪除
 
-    $where=array('Tb_index'=>$_GET['Tb_index']);
+    $where=['Tb_index'=>$_GET['Tb_index']];
 
    	$del_row=pdo_select('SELECT aPic, OtherFile FROM appArticle WHERE Tb_index=:Tb_index', $where);
    	if (isset($del_row['aPic'])) { unlink('../../img/'.$del_row['aPic']); }
@@ -32,7 +32,7 @@ if ($_GET) {
    
    $pdo=pdo_conn();
    $sql=$pdo->prepare("SELECT Tb_index, aTitle, UpdateDate, OrderBy FROM appArticle WHERE mt_id=:mt_id AND webLang=:webLang ORDER BY OrderBy DESC, UpdateDate DESC");
-   $sql->execute(array( "mt_id"=>$_GET['MT_id'], "webLang"=>$weblang));
+   $sql->execute( ["mt_id"=>$_GET['MT_id'], "webLang"=>$weblang] );
 }
 
 ?>
