@@ -221,6 +221,46 @@ function unlock_key($login_key)
         return $unlock_key;
 }
 
+
+//----------------GOOGLE recaptcha 驗證程式 --------------------
+function GOOGLE_recaptcha($secretKey, $recaptcha_response, $location)
+{
+    if (!empty($recaptcha_response)) {
+
+    $ReCaptchaResponse = filter_input(INPUT_POST, 'g-recaptcha-response');
+
+    // 建立CURL連線
+    $ch = curl_init();
+    // 設定擷取的URL網址
+    curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response=' . trim($ReCaptchaResponse));
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    //將curl_exec()獲取的訊息以文件流的形式返回，而不是直接輸出。
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    // 執行
+    $Response = curl_exec($ch);
+    // 關閉CURL連線
+    curl_close($ch);
+
+    //$Response=file_get_contents();
+    $re_code = json_decode($Response, true);
+
+    if ($re_code['success'] != true) {
+
+      location_up($location, '請確定您不是機器人');
+      exit();
+    }
+  } else {
+
+    location_up($location, '請確定您不是機器人');
+    exit();
+  }
+}
+
+  //----------------GOOGLE recaptcha 驗證程式 --------------------*
+
+
+
+
 //-------------------------------- 驗證 input 排除特殊符號 ---------------------------------------------
 function test_input($GET)
 {

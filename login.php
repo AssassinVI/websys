@@ -2,6 +2,11 @@
 require 'core/inc/config.php';
 require 'core/inc/function.php';
 
+//------------------- 判斷HTTPS ------------------
+if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on'){
+  header("Location: https://srl.tw/newsite/sys/login.php");
+  exit();
+}
 ?>
 <?php
 $company_txt = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
@@ -11,37 +16,9 @@ if ($_GET) {
 
 if ($_POST) {
 
-	//----------------GOOGLE recaptcha 驗證程式 --------------------
-	if (!empty($_POST['g-recaptcha-response'])) {
+	//-- GOOGLE recaptcha 驗證程式 --
+ 	GOOGLE_recaptcha('6Le-hSUTAAAAAKpUuKnGOoHpKhgq60V1irZPA_4E', $_POST['g-recaptcha-response'], 'login.php');
 
-		$ReCaptchaResponse = filter_input(INPUT_POST, 'g-recaptcha-response');
-
-		// 建立CURL連線
-		$ch = curl_init();
-		// 設定擷取的URL網址
-		curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify?secret=6Le-hSUTAAAAAKpUuKnGOoHpKhgq60V1irZPA_4E&response=' . trim($ReCaptchaResponse));
-		curl_setopt($ch, CURLOPT_HEADER, false);
-		//將curl_exec()獲取的訊息以文件流的形式返回，而不是直接輸出。
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		// 執行
-		$Response = curl_exec($ch);
-		// 關閉CURL連線
-		curl_close($ch);
-
-		//$Response=file_get_contents();
-		$re_code = json_decode($Response, true);
-
-		if ($re_code['success'] != true) {
-
-			location_up('login.php', '請確定您不是機器人');
-			exit();
-		}
-	} else {
-
-		location_up('login.php', '請確定您不是機器人');
-		exit();
-	}
-	//----------------GOOGLE recaptcha 驗證程式 --------------------*
     
 	$where = array("admin_id" => $_POST['admin_id'], "admin_pwd" => aes_encrypt($aes_key, $_POST['admin_pwd']));
 	$admin = pdo_select("SELECT Tb_index, admin_per, name FROM sysAdmin WHERE admin_id=:admin_id AND admin_pwd=:admin_pwd AND is_use='1'", $where);
