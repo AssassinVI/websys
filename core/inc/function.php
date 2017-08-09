@@ -89,11 +89,8 @@
    $sql->execute();
    if ($sql->rowcount()>1) {
 
-      $array=array();
-      while ($row=$sql->fetch(PDO::FETCH_ASSOC)) {
-         array_push($array, $row);
-      }
-      return $array;//失敗
+      $row=$sql->fetchAll();
+      return $row;
 
    }else{
       $row=$sql->fetch(PDO::FETCH_ASSOC);
