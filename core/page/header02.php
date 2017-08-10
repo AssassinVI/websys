@@ -20,7 +20,7 @@
                             <li>
                                 <a href="../../module/Dashboard/index.php">
                                     <i class="fa fa-th-large"></i>
-                                    <span class="nav-label">Dashboard</span>
+                                    <span class="nav-label">網站儀錶板</span>
                                 </a>
                             </li>
 
