@@ -10,6 +10,18 @@ if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on'){
 ?>
 <?php
 $company_txt = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
+
+if(!empty($_COOKIE['Tb_index'])){
+
+  $where=["Tb_index"=>$_COOKIE['Tb_index']];
+  $member=pdo_select("SELECT admin_id FROM sysAdmin WHERE Tb_index=:Tb_index", $where);
+  $admin_id=$member['admin_id'];
+
+}else{
+  $admin_id='';
+}
+
+
 if ($_GET) {
 	if ($_GET['login'] == 'out') {session_destroy();}
 }
@@ -26,6 +38,17 @@ if ($_POST) {
 	if (empty($admin)) {
 		location_up('login.php', '帳號或密碼錯誤!!');
 	} else {
+       
+       //------------------------- 記住帳號 -------------------------------
+
+        if(!empty($_POST['remember'])){
+           setcookie('Tb_index', $admin['Tb_index'], time()+3600000);
+        }else{
+           setcookie('Tb_index', '', time()-3600000);
+        }
+        
+        //-------------------------- 權限判斷 ----------------------------
+
 		if ($admin['admin_per'] == 'admin') {
 			location_up('module/Dashboard/index.php', '歡迎管理者登入');
 			//登入密鑰
@@ -34,7 +57,7 @@ if ($_POST) {
 			$_SESSION['admin_per'] = $admin['admin_per'];
 		} else {
            
-            //-- 權限 --
+            
 			$group_where=array("Tb_index"=>$admin['admin_per']);
 			$group=pdo_select("SELECT Permissions FROM sysAdminGroup WHERE Tb_index=:Tb_index", $group_where);
 			$group_array=explode(',', $group['Permissions']);
@@ -67,6 +90,7 @@ if ($_POST) {
   <style type="text/css">
     body{ font-family: Microsoft JhengHei }
     .logo-name{ font-size: 75px; letter-spacing: -5px; text-shadow: 2px 4px 10px #acacac;color:#fff;}
+    #check_div{text-align: left; padding: 5px 15px; border: 1px solid #d5d5d5;}
   </style>
 
 </head>
@@ -84,10 +108,13 @@ if ($_POST) {
 
             <form class="m-t" role="form" method="POST" action="login.php">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="admin_id" placeholder="Username" required="">
+                    <input type="text" class="form-control" name="admin_id" placeholder="Username" required="" value="<?php echo $admin_id;?>">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" name="admin_pwd" placeholder="Password" required="">
+                </div>
+                <div id="check_div" class="form-group">
+                    <input type="checkbox" name="remember" id="remember" value="1" <?php echo $check=empty($_COOKIE['Tb_index'])?'':'checked'; ?>> <label for="remember">記住帳號</label>
                 </div>
                 <!-- google 驗證碼 -->
                 <div class="g-recaptcha" data-sitekey="6Le-hSUTAAAAABhfvrZeqewWS6hENhApDVtdAJfr"></div>
