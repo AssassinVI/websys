@@ -91,6 +91,7 @@ if ($_POST) {
     body{ font-family: Microsoft JhengHei }
     .logo-name{ font-size: 75px; letter-spacing: -5px; text-shadow: 2px 4px 10px #acacac;color:#fff;}
     #check_div{text-align: left; padding: 5px 15px; border: 1px solid #d5d5d5;}
+    #check_div label{ padding: 5px; padding-right: 190px; }
   </style>
 
 </head>
