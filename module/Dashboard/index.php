@@ -62,7 +62,7 @@ if ($_GET) {
                                 <tbody>
                                 <?php 
                                   $pdo=pdo_conn();
-                                  $sql=$pdo->prepare("SELECT * FROM appContacts WHERE webLang=:webLang ORDER BY StartDate DESC LIMIT 0,5");
+                                  $sql=$pdo->prepare("SELECT * FROM appContacts WHERE webLang=:webLang AND process='0' ORDER BY StartDate DESC LIMIT 0,5");
                                   $sql->execute(array(":webLang"=>$weblang));
                                 ?>
                                     <?php $i=1; while ($row=$sql->fetch(PDO::FETCH_ASSOC)) {?>

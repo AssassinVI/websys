@@ -3,10 +3,10 @@ require 'core/inc/config.php';
 require 'core/inc/function.php';
 
 //------------------- 判斷HTTPS ------------------
-if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on'){
+/*if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!='on'){
   header("Location: https://srl.tw/newsite/sys/login.php");
   exit();
-}
+}*/
 ?>
 <?php
 $company_txt = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
