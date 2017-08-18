@@ -29,8 +29,6 @@
   	 	                'fax'=>$_POST['fax'],
   	 	              'email'=>$_POST['email'],
   	 	               'adds'=>$_POST['adds'],
-  	 	           'location'=>$_POST['location'],
-  	 	          'title_txt'=>$_POST['title_txt'],
   	 	            'webLang'=>$weblang
   	 	           );
   	   pdo_insert('company_base', $param);
@@ -46,8 +44,6 @@
   	 	                'fax'=>$_POST['fax'],
   	 	              'email'=>$_POST['email'],
   	 	               'adds'=>$_POST['adds'],
-  	 	           'location'=>$_POST['location'],
-  	 	          'title_txt'=>$_POST['title_txt'],
   	 	           );
   	 $where=array( 'Tb_index'=>$_POST['Tb_index'] );
   	   pdo_update('company_base', $param, $where);
@@ -65,8 +61,6 @@
      $lon=$location[1];
      $zipcode=($row['webLang']=='tw')? substr($row['adds'], 0,3) : '';
      $adds=explode(',', $row['adds']);
-     $skype_more=explode(',', $row['skype_more']);
-     $QQ_more=explode(',', $row['QQ_more']);
   }
 
  if ($_FILES['logo']['name']) { //檔案上傳
@@ -231,10 +225,8 @@
                          phone: $('#phone').val(),
                            fax: $('#fax').val(),
                          email: $('#email').val(),
-                  service_time: $('#service_time').val(),
                           adds: $('[name="zipcode"]').val()+$('[name="county"]').val()+$('[name="district"]').val()+","+$("#adds").val(),
-                      location: $('#lat').val()+','+$('#lon').val(),
-                     title_txt:CKEDITOR.instances.ckeditor.getData()
+                     
 			         };
 			ajax_in('admin.php', data, '資料儲存', 'no');
 			
