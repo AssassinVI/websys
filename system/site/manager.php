@@ -29,6 +29,7 @@ require_once '../../core/inc/function.php';
       }
 
       $OnLineOrNot=empty($_POST['OnLineOrNot'])? '': $_POST['OnLineOrNot'];
+      $isTopbar=empty($_POST['isTopbar'])? '': $_POST['isTopbar'];
        
        	 $param=array(
   	 		          'Tb_index'=> 'site'.date('YmdHis').rand(0,99),
@@ -37,7 +38,9 @@ require_once '../../core/inc/function.php';
   	 		             'MT_EX'=> $_POST['MT_EX'],
   	 		         'parent_id'=> $_POST['parent_id'],
   	 		           'is_data'=> 0,
+  	 		          'isTopbar'=> $isTopbar,
   	 		         'StartDate'=> date('Y-m-d'),
+  	 		           'use_web'=> $_POST['use_web'],
   	 		       'OnLineOrNot'=> $OnLineOrNot,
   	 		           'weblang'=> $weblang
   	 		         );
@@ -63,11 +66,14 @@ require_once '../../core/inc/function.php';
      }
   	  
   	  $OnLineOrNot=empty($_POST['OnLineOrNot'])? '': $_POST['OnLineOrNot'];
+  	  $isTopbar=empty($_POST['isTopbar'])? '': $_POST['isTopbar'];
   	  
         $param=array(
         	              'aPic'=> $aPic,
   	 		           'MT_Name'=> $_POST['MT_Name'],
   	 		             'MT_EX'=> $_POST['MT_EX'],
+  	 		           'use_web'=> $_POST['use_web'],
+  	 		          'isTopbar'=> $isTopbar,
   	 		       'OnLineOrNot'=> $OnLineOrNot
         	         );
         pdo_update('maintable', $param, $where);
@@ -134,6 +140,18 @@ require_once '../../core/inc/function.php';
 							<label class="col-md-2 control-label" for="MT_EX">摘要內容</label>
 							<div class="col-md-10">
 								<textarea class="form-control" id="MT_EX" name="MT_EX" placeholder="摘要內容"><?php echo $row['MT_EX'];?></textarea>
+							</div>
+						</div>
+						<div  class="form-group">
+							<label class="col-md-2 control-label" for="use_web">前台網址</label>
+							<div class="col-md-10">
+								<input type="text" class="form-control" id="use_web" name="use_web" value="<?php echo $row['use_web'];?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="isTopbar">是否顯示在巡覽列</label>
+							<div class="col-md-10">
+								<input class="checkbox switch switch-primary" id="isTopbar" name="isTopbar" type="checkbox" value="1" <?php echo $check=!isset($row['isTopbar']) || $row['isTopbar']==1 ? 'checked' : ''; ?>/>
 							</div>
 						</div>
 						<div class="form-group">
