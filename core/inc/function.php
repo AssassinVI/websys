@@ -151,6 +151,27 @@ function is_post_file($tb_name, $Tb_index, $file_id, $session_name)
 }
 
 
+//----------------------------- 每日流量 ---------------------------
+function OneDayChart()
+{
+  if (empty($_SESSION['on_web'])) {
+  $where=array('ChartDate'=>date('Y-m-d'));
+  $row=pdo_select("SELECT * FROM OneDayChart WHERE ChartDate=:ChartDate", $where);
+
+  if (empty($row['ChartDate'])) {
+    $param=array('ChartDate'=>date('Y-m-d'), 'ChartNum'=>'1');
+    pdo_insert('OneDayChart', $param);
+  }
+  else{
+    $pdo=pdo_conn();
+    $sql=$pdo->prepare("UPDATE OneDayChart SET ChartNum=ChartNum+1 WHERE ChartDate=:ChartDate");
+    $sql->execute(array(':ChartDate'=>$row['ChartDate']));
+  }
+}
+  $_SESSION['on_web']='online';
+}
+
+
 /* ------------------------------- 網頁跳轉 ------------------------------------ */
 
 function location_up($location_path,$alert_txt)

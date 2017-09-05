@@ -21,7 +21,7 @@ require_once '../../core/inc/function.php';
 
       if (!empty($_FILES['aPic']['name'])) {
       	$type=explode('.', $_FILES['aPic']['name']);
-      	$aPic='site'.date('YmdHis').rand(0,99).$type[1];
+      	$aPic='site'.date('YmdHis').rand(0,99).'.'.$type[1];
       	move_uploaded_file($_FILES['aPic']['tmp_name'], '../../img/'.$aPic);
       }
       else{
@@ -61,7 +61,7 @@ require_once '../../core/inc/function.php';
      else{
         unlink('../../img/'.$is_pic['aPic']);
         $type=explode('.', $_FILES['aPic']['name']);
-      	$aPic='site'.date('YmdHis').rand(0,99).$type[1];
+      	$aPic='site'.date('YmdHis').rand(0,99).'.'.$type[1];
         move_uploaded_file($_FILES['aPic']['tmp_name'], '../../img/'.$aPic);
      }
   	  

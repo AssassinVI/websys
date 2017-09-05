@@ -93,55 +93,6 @@ if ($_GET) {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <h2>維修服務單</h2>
-                <div class="ibox">
-                    <div class="ibox-content">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                  <th>#</th>  
-                                  <th>單號</th>  
-                                  <th>經銷商名稱</th> 
-                                  <th>產品型號</th>  
-                                  <th>使用年限</th>  
-                                  <th>維修原因</th>   
-                                </thead>
-                                <tbody>
-                                <?php 
-                                  $pdo=pdo_conn();
-                                  $sql=$pdo->prepare("SELECT * FROM appService ORDER BY StartDate DESC LIMIT 0,5");
-                                  $sql->execute(array(":webLang"=>$weblang));
-                                ?>
-                                    <?php $i=1; while ($row=$sql->fetch(PDO::FETCH_ASSOC)) {?>
-                                    <tr>
-                                        <td><?php echo $i?></td>
-                                        
-                                        <td nowrap><?php echo $row['Tb_index']?></td>
-                                        <td nowrap><?php echo $row['sellName']?></td>
-                                        <td nowrap><?php echo $row['pro_id']?></td>
-                                        <td nowrap><?php echo $row['useNum']?></td>
-                                        <td>
-                                          <?php echo $row['UserMsg']?>
-                                        </td>
-                                        <td nowrap>
-                                        <?php if($row['is_deal']=='0'){?>
-                                        <a href="index.php?type=ser_process&process=1&Tb_index=<?php echo $row['Tb_index']?>" class="text-no"><i class="fa fa-times "></i> 未處理</a> ｜
-                                        <?php }else{?>
-                                        <a href="index.php?type=ser_process&process=0&Tb_index=<?php echo $row['Tb_index']?>" class="text-navy"><i class="fa fa-check-square-o "></i> 已處理</a> ｜
-                                        <?php }?>
-                                        <a href="index.php?type=service_del&Tb_index=<?php echo $row['Tb_index']?>" class="text-muted"
-                                           onclick="if (!confirm('確定要刪除 [<?php echo $row['UserMsg']?>] ?')) {return false;}">
-                                        <i class="fa fa-trash "></i> 刪除</a></td>
-                                    </tr>
-                                    <?php $i++; } $pdo=NULL;?>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
