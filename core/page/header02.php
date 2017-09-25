@@ -50,7 +50,7 @@ while ($bar = $sql->fetch(PDO::FETCH_ASSOC)) {
 
 		$bar_txt = ' <li>
                                       <a href="../../module/' . $bar['Mod_code'] . '/admin.php?MT_id=' . $bar['mt_Tb_index'] . '">
-                                        <i class="fa fa-folder-open-o"></i>
+                                        <i class="fa fa-file-o"></i>
                                         <span class="nav-label">' . $bar['MT_Name'] . '</span>
                                       </a>
                                     </li>';
