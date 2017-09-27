@@ -1,9 +1,22 @@
+<!--  基本結構
+      <div class="page">
+                  <span ><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    <span class="current">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    ...
+                    <a href="#">5</a>
+                  <a ><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+         </div> 
+-->
+
 <?php
  //-- 內容MT_id --
  $MT=empty($MT_id)? $_GET['MT_id']:$MT_id;
  //-- 總數 --
  $where=array('mt_id'=>$MT);
- $row_totle=pdo_select("SELECT COUNT(*) as totle FROM appProduct WHERE mt_id=:mt_id",$where);
+ $row_totle=pdo_select("SELECT COUNT(*) as totle FROM ".$tb_name." WHERE mt_id=:mt_id",$where);
  //-- 總頁數 --
  $page_totle=ceil((int)$row_totle['totle']/$num);
  //-- 單頁 --

@@ -118,6 +118,7 @@ if ($_GET) {
 
 			<?php 
                $url='admin.php?MT_id='.$_GET['MT_id'];
+               $tb_name='appProduct';
 
                require '../../core/page/page.php';
 			?>
