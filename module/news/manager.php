@@ -74,7 +74,6 @@ if ($_POST) {
 	$param=array(  'Tb_index'=>$Tb_index,
 		              'mt_id'=>$_POST['mt_id'],
 		             'aTitle'=>$_POST['aTitle'],
-		       'aTitle_small'=>$_POST['aTitle_small'],
 		          'aAbstract'=>$_POST['aAbstract'],
 		               'aPic'=>$aPic,
 		          'OtherFile'=>$OtherFile,
@@ -150,7 +149,6 @@ if ($_POST) {
     $param=array(  
 		              'mt_id'=>$_POST['mt_id'],
     	             'aTitle'=>$_POST['aTitle'],
-    	       'aTitle_small'=>$_POST['aTitle_small'],
 		          'aAbstract'=>$_POST['aAbstract'],
 		               'aTXT'=>$_POST['aTXT'],
 		               
@@ -191,13 +189,7 @@ if ($_GET) {
 								<input type="text" class="form-control" id="aTitle" name="aTitle" value="<?php echo $row['aTitle'];?>">
 							</div>
 						</div>
-						<?php $display= $_GET['MT_id']=='site2017053110370311'? 'none':''; ?>
-						<div class="form-group" style="display: <?php echo $display;?> ">
-							<label class="col-md-2 control-label" for="aTitle_small">小標題名稱</label>
-							<div class="col-md-10">
-								<input type="text" class="form-control" id="aTitle_small" name="aTitle_small" value="<?php echo $row['aTitle_small'];?>">
-							</div>
-						</div>
+						
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="aPic">代表圖檔</label>
 							<div class="col-md-10">

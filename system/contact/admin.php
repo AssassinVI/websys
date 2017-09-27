@@ -29,6 +29,8 @@
   	 	                'fax'=>$_POST['fax'],
   	 	              'email'=>$_POST['email'],
   	 	               'adds'=>$_POST['adds'],
+  	 	            'keywords'=>$_POST['keywords'],
+  	 	          'description'=>$_POST['description'],
   	 	            'webLang'=>$weblang
   	 	           );
   	   pdo_insert('company_base', $param);
@@ -44,6 +46,8 @@
   	 	                'fax'=>$_POST['fax'],
   	 	              'email'=>$_POST['email'],
   	 	               'adds'=>$_POST['adds'],
+  	 	           'keywords'=>$_POST['keywords'],
+  	 	        'description'=>$_POST['description']
   	 	           );
   	 $where=array( 'Tb_index'=>$_POST['Tb_index'] );
   	   pdo_update('company_base', $param, $where);
@@ -156,18 +160,22 @@
 								<input type="text" class="form-control" id="adds" value="<?php echo $adds[1];?>">
 							</div>
 						</div>
-						<!--<div class="form-group">
-							<label class="col-md-2 control-label" >座標</label>
-							
-							<div class="col-md-4">
-								<input type="text" class="form-control" id="lat" placeholder="緯度" value="<?php //echo $lat;?>">
+
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="keywords">關鍵字</label>
+							<div class="col-md-10">
+								<textarea class="form-control" id="keywords" name="keywords"><?php echo $row['keywords'];?></textarea>
 							</div>
-							<div class="col-md-1 text-center">：</div>
-							<div class="col-md-4">
-								<input type="text" class="form-control" id="lon" placeholder="經度" value="<?php //echo $lon;?>">
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="description">描述</label>
+							<div class="col-md-10">
+							   
+								<textarea class="form-control" id="description" name="description"><?php echo $row['description'];?></textarea>
 							</div>
-							<p class="col-md-10 col-md-offset-2">如果有使用google map,系統會自動抓取地址資訊並以此定位，如果覺得地址所呈現出的位置不夠精準，可自行查詢詳細座標後填入</p>
-						</div>-->
+						</div>
+						
 
                      
 
@@ -226,6 +234,8 @@
                            fax: $('#fax').val(),
                          email: $('#email').val(),
                           adds: $('[name="zipcode"]').val()+$('[name="county"]').val()+$('[name="district"]').val()+","+$("#adds").val(),
+                          description: $('#description').val(),
+                          keywords:$('#keywords').val()
                      
 			         };
 			ajax_in('admin.php', data, '資料儲存', 'no');
