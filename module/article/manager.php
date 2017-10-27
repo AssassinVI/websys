@@ -35,7 +35,7 @@ if ($_POST) {
       if (!empty($_FILES['aPic']['name'])){
 
       	if (test_img($_FILES['aPic']['name'])) {
-      	 $type=explode('.', $_FILES['aPic']['name']);
+      	 $type=explode('/', $_FILES['aPic']['type']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
       	}
@@ -53,7 +53,7 @@ if ($_POST) {
 
            if (test_file($_FILES['OtherFile']['name'][$i])){
 
-             $type=explode('.', $_FILES['OtherFile']['name'][$i]);
+             $type=explode('/', $_FILES['OtherFile']['type'][$i]);
       	     $OtherFile.=$Tb_index.'_other_'.$i.'.'.$type[1].',';
              more_other_upload('OtherFile', $i, $Tb_index.'_other_'.$i.'.'.$type[1]);
       	   }
@@ -88,7 +88,7 @@ if ($_POST) {
 
       	if (test_img($_FILES['aPic']['name'])){
 
-      	 $type=explode('.', $_FILES['aPic']['name']);
+      	 $type=explode('/', $_FILES['aPic']['type']);
       	 $aPic=$Tb_index.'.'.$type[1];
          fire_upload('aPic', $aPic);
         $aPic_param=['aPic'=>$aPic];
@@ -118,7 +118,7 @@ if ($_POST) {
 
       		 if (test_file($_FILES['OtherFile']['name'][$i])){
 
-      		 	   $type=explode('.', $_FILES['OtherFile']['name'][$i]);
+      		 	   $type=explode('/', $_FILES['OtherFile']['type'][$i]);
       		 	   $OtherFile.=$Tb_index.'_other_'.($file_num+$i).'.'.$type[1].',';
       		 	   more_other_upload('OtherFile', $i, $Tb_index.'_other_'.($file_num+$i).'.'.$type[1]);
       		 }

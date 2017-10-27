@@ -45,7 +45,7 @@ if ($_POST) {
       if (!empty($_FILES['back_img']['name'])){
 
       	if (test_img($_FILES['back_img']['name'])){
-      		 $type=explode('.', $_FILES['back_img']['name']);
+      		 $type=explode('/', $_FILES['back_img']['type']);
       		 $back_img=$Tb_index.'.'.$type[1];
       		 fire_upload('back_img', $back_img);
       	}else{
@@ -90,7 +90,7 @@ if ($_POST) {
       if (!empty($_FILES['back_img']['name'])) {
 
       	if (test_img($_FILES['back_img']['name'])){
-      			 $type=explode('.', $_FILES['back_img']['name']);
+      			 $type=explode('/', $_FILES['back_img']['type']);
       			 $back_img=$Tb_index.date('His').'.'.$type[1];
       		   fire_upload('back_img', $back_img);
 
