@@ -29,7 +29,7 @@ if ($_GET) {
 if ($_POST) {
 
 	//-- GOOGLE recaptcha 驗證程式 --
- 	GOOGLE_recaptcha('6Le-hSUTAAAAAKpUuKnGOoHpKhgq60V1irZPA_4E', $_POST['g-recaptcha-response'], 'login.php');
+ 	GOOGLE_recaptcha('6Le2HRIUAAAAAJJbt4e5F6g6yuW-FmSAYg--3R43', $_POST['g-recaptcha-response'], 'login.php');
 
     
 	$where = array("admin_id" => $_POST['admin_id'], "admin_pwd" => aes_encrypt($aes_key, $_POST['admin_pwd']));
@@ -118,7 +118,7 @@ if ($_POST) {
                     <input type="checkbox" name="remember" id="remember" value="1" <?php echo $check=empty($_COOKIE['Tb_index'])?'':'checked'; ?>> <label for="remember">記住帳號</label>
                 </div>
                 <!-- google 驗證碼 -->
-                <div class="g-recaptcha" data-sitekey="6Le-hSUTAAAAABhfvrZeqewWS6hENhApDVtdAJfr"></div>
+                <div class="g-recaptcha" data-sitekey="6Le2HRIUAAAAAJuw4gBeXfGm_RBmQ1ONISumalC0"></div>
                 <button type="submit" class="btn btn-primary block full-width m-b">登入系統</button>
             </form>
             <p class="m-t"> <small>Copyright ©<?php echo $company_txt['remark'] ?></small> </p>
