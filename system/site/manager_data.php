@@ -95,6 +95,7 @@
         	              'aPic'=> $aPic,
   	 		           'MT_Name'=> $_POST['MT_Name'],
   	 		             'MT_EX'=> $_POST['MT_EX'],
+                 'parent_id'=> $_POST['parent_id'],
   	 		           'use_web'=> $_POST['use_web'],
   	 		       'outside_web'=> $_POST['outside_web'],
   	 		       'OnLineOrNot'=> $OnLineOrNot,
@@ -130,9 +131,32 @@
 					<form id="site_form" class="form-horizontal" action="manager_data.php" method="POST" enctype='multipart/form-data' >
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="MT_Name">單元名稱</label>
-							<div class="col-md-10">
+							<div class="col-md-4">
 								<input type="text" class="form-control" id="MT_Name" name="MT_Name" value="<?php echo $row['MT_Name'];?>">
 							</div>
+              <label class="col-md-2 control-label" for="parent_id">父資料夾</label>
+              <div class="col-md-4">
+                <select name="parent_id" class="form-control">
+                  <option value="">-- 無 --</option>
+                  <?php 
+                   $pdo=pdo_conn();
+                   $sql=$pdo->prepare("SELECT MT_Name, Tb_index FROM maintable WHERE is_data='0'");
+                   $sql->execute();
+                   while ($row_par_id=$sql->fetch(PDO::FETCH_ASSOC)) {
+
+                    if($_GET['parent_id']==$row_par_id['Tb_index']){
+                     echo '<option selected value="'.$row_par_id['Tb_index'].'">'.$row_par_id['MT_Name'].'</option>';
+                    }
+                    else{
+                     echo '<option value="'.$row_par_id['Tb_index'].'">'.$row_par_id['MT_Name'].'</option>';
+                    }
+                   }
+                   $pdo=NULL;
+                  ?>
+                  
+                </select>
+               <!--  <input type="text" class="form-control" id="parent_id" name="parent_id" value="<?php //echo $_GET['parent_id'];?>"> -->
+              </div>
 						</div>
 						<div class="form-group" id="img_fire">
 							<label class="col-md-2 control-label" for="aPic">代表圖檔</label>
@@ -221,7 +245,7 @@
 							</div>
 						</div>
 
-						<input type="hidden" id="parent_id" name="parent_id" value="<?php echo $_GET['parent_id'];?>"><!-- 父資料ID -->
+						<!-- <input type="hidden" id="parent_id" name="parent_id" value="<?php //echo $_GET['parent_id'];?>"> --><!-- 父資料ID -->
 						<input type="hidden" id="Tb_index" name="Tb_index" value="<?php echo $_GET['Tb_index'];?>">
 					</form>
 				</div><!-- /.panel-body -->
