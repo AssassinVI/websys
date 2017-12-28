@@ -1,6 +1,6 @@
 </head>
 
-<body class="fixed-sidebar pace-done">
+<body class="pace-done fixed-sidebar skin-1">
 <div id="wrapper">
 
     <nav class="navbar-default navbar-static-side" role="navigation">
@@ -137,27 +137,24 @@ function bar_tree_tb($Tb_index, $Mod_code, $MT_Name, $is_data) {
                                 </a>
                             </li>
 
-
-                         <?php if ($_SESSION['admin_per'] == 'admin') {?>
-                            <li class="special_link">
+                         
+                            <li class="special_link" style="display: <?php echo $sys_dis=in_array('systeam', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" >
                                 <a href="#">
                                     <i class="fa fa-cog"></i>
                                     <span class="nav-label">系統設定</span>
                                     <span class="fa arrow"></span></a>
                                 </a>
                                 <ul class="nav nav-second-level">
-                                    <li><a href="../../system/lang/admin.php">語系設定</a></li>
-                                    <li><a href="../../system/site/admin.php">網頁架構</a></li>
-                                 
-                                    <li><a href="../../system/md/admin.php">模組管理</a></li>
-                                    <li><a href="../../system/admin/admin.php">管理者管理</a></li>
-                                    <li><a href="../../system/admin_group/admin.php">群組權限管理</a></li>
+                                    <li style="display: <?php echo $sys_dis=in_array('sys1', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" ><a href="../../system/lang/admin.php">語系設定</a></li>
+                                    <li style="display: <?php echo $sys_dis=in_array('sys2', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" ><a href="../../system/site/admin.php">網頁架構</a></li>
+                                    <li style="display: <?php echo $sys_dis=in_array('sys3', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" ><a href="../../system/md/admin.php">模組管理</a></li>
+
+                                    <li style="display: <?php echo $sys_dis=in_array('sys4', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" ><a href="../../system/admin/admin.php">管理者管理</a></li>
+                                    <li style="display: <?php echo $sys_dis=in_array('sys5', $_SESSION['group']) || $_SESSION['admin_per']=='admin' ? 'block':'none';?>;" ><a href="../../system/admin_group/admin.php">群組權限管理</a></li>
                                  
                                 </ul>
                             </li>
-                             <?php }?>
-
-
+                            
 
             </ul>
 
@@ -177,26 +174,26 @@ function bar_tree_tb($Tb_index, $Mod_code, $MT_Name, $is_data) {
                         <?php
 
 // --------------------------------- 語系 ------------------------------
-$pdo = pdo_conn();
-$sql = $pdo->prepare("SELECT Lang_name, Lang_code FROM sysLang WHERE is_use='1'");
-$sql->execute();
+// $pdo = pdo_conn();
+// $sql = $pdo->prepare("SELECT Lang_name, Lang_code FROM sysLang WHERE is_use='1'");
+// $sql->execute();
 
-echo '<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">';
-echo '   <i class="fa fa-globe"></i>  <span class="label label-warning">' . $sql->rowcount() . '</span>';
-echo '</a>';
-echo '<ul class="dropdown-menu dropdown-messages">';
+// echo '<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">';
+// echo '   <i class="fa fa-globe"></i>  <span class="label label-warning">' . $sql->rowcount() . '</span>';
+// echo '</a>';
+// echo '<ul class="dropdown-menu dropdown-messages">';
 
-while ($lang = $sql->fetch(PDO::FETCH_ASSOC)) {
-	echo "<li><a href='?lang=" . $lang['Lang_code'] . "'>" . $lang['Lang_name'] . "</a></li>";
-}
-$pdo = NULL;
+// while ($lang = $sql->fetch(PDO::FETCH_ASSOC)) {
+// 	echo "<li><a href='?lang=" . $lang['Lang_code'] . "'>" . $lang['Lang_name'] . "</a></li>";
+// }
+// $pdo = NULL;
 
-echo '</ul>';
+// echo '</ul>';
 ?>
 
                     </li>
                     <li>
-                        <a href="../../login.php?login=out" onclick="if (!confirm('是否要登出?')) {return false;}">
+                        <a style="color: #127bba;" href="../../login.php?login=out" onclick="if (!confirm('是否要登出?')) {return false;}">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>

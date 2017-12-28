@@ -33,6 +33,13 @@ $company = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
      <link rel="stylesheet" type="text/css" href="../../js/plugins/fancyBox/jquery.fancybox.css">
 
      <style type="text/css">
+       #cLogo{ color: #0e9aef; }
+        body.skin-1{ background: #1e2c42; }
+        .skin-1 .nav > li > a{ color: #e1e1e1; }
+        .skin-1 .nav-header{ background-size: cover; }
+        .skin-1 .nav > li.active{ background: #0f547d; }
+        .navbar-default .landing_link a, .navbar-default .special_link a{ background: #1587cc; }
+        .navbar-default .landing_link a:hover, .navbar-default .special_link a:hover, .navbar-default .special_link a:focus{ background: #1590d8 !important; }
      	.close_btn{ position: absolute; bottom: 0px; right: 15px; border: 0px; }
         .new_div{ position: absolute; right: 0px; bottom: 0px; }
         .twzipcode{ display: inline-block; }

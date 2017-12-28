@@ -201,6 +201,65 @@
      return $txt;
   }
   ?>
+
+
+<?php if ($_SESSION['admin_per'] == 'admin') {?>
+ <tr class="folder_group branch expanded" style="background: #dff6f2;" data-tt-id="systeam">
+   <td class="parent_td">
+     <span style="color:#179c81">
+      <strong><i class="fa fa-folder-open "></i> 系統設定 </strong>
+     </span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('systeam',$Permissions)?'checked':'';?> value="systeam"> 
+    </td>
+  </tr>
+
+  <tr class="unit_group leaf expanded" data-tt-id="sys1" data-tt-parent-id="systeam" style="display: table-row;">
+    <td class="parent_td">
+      <span style="color:#949494"><strong><i class="fa fa-file-text "></i> 語系設定 </strong></span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('sys1',$Permissions)?'checked':'';?> value="sys1"> 
+    </td> 
+  </tr>
+
+  <tr class="unit_group leaf expanded" data-tt-id="sys2" data-tt-parent-id="systeam" style="display: table-row;">
+    <td class="parent_td">
+      <span style="color:#949494"><strong><i class="fa fa-file-text "></i> 網頁架構 </strong></span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('sys2',$Permissions)?'checked':'';?> value="sys2"> 
+    </td> 
+  </tr>
+
+  <tr class="unit_group leaf expanded" data-tt-id="sys3" data-tt-parent-id="systeam" style="display: table-row;">
+    <td class="parent_td">
+      <span style="color:#949494"><strong><i class="fa fa-file-text "></i> 模組管理 </strong></span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('sys3',$Permissions)?'checked':'';?> value="sys3"> 
+    </td> 
+  </tr>
+
+  <tr class="unit_group leaf expanded" data-tt-id="sys4" data-tt-parent-id="systeam" style="display: table-row;">
+    <td class="parent_td">
+      <span style="color:#949494"><strong><i class="fa fa-file-text "></i> 管理者管理 </strong></span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('sys4',$Permissions)?'checked':'';?> value="sys4"> 
+    </td> 
+  </tr>
+
+  <tr class="unit_group leaf expanded" data-tt-id="sys5" data-tt-parent-id="systeam" style="display: table-row;">
+    <td class="parent_td">
+      <span style="color:#949494"><strong><i class="fa fa-file-text "></i> 群組權限管理 </strong></span>
+    </td>
+    <td>
+      <input name="group_check[]" type="checkbox" class="checkbox" <?php echo $sys_Permissions=in_array('sys5',$Permissions)?'checked':'';?> value="sys5"> 
+    </td> 
+  </tr>
+<?php }?>
     
   </tbody>
 </table>

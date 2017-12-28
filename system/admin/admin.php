@@ -34,6 +34,7 @@
 
 	<div class="row">
       
+      <?php if ($_SESSION['admin_per'] == 'admin') {?>
       <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@ 管理員 @@@@@@@@@@@@@@@@@@@@@@@@ -->
    		<div class="col-lg-12">
 			<div class="panel panel-default">
@@ -92,6 +93,7 @@
 			</div>
 		</div>
 	</div>
+	<?php }?>
 
 	 <?php 
      while ($row_group=$sql_group->fetch(PDO::FETCH_ASSOC)) {

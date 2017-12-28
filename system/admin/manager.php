@@ -82,7 +82,9 @@ include("../../core/page/header02.php");//載入頁面heaer02
               <label class="col-md-1 control-label" for="admin_per">權限名稱</label>
               <div class="col-md-2">
                 <select id="admin_per" class="form-control">
-                  <option value="admin" <?php echo $admin=$row['admin_per']=='admin' ? 'selected':'';?>>管理員</option>
+                  <?php if($_SESSION['admin_per']=='admin'){;?>
+                  <option value="admin" >管理員</option>
+                  <?php }?>
                   <!--<option value="user" <?php //echo $admin=$row['admin_per']=='user' ? 'selected':'';?>>使用者</option>-->
                   <?php 
                     $sql_group=$pdo->prepare("SELECT Tb_index, Group_name FROM sysAdminGroup");
