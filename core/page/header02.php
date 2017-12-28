@@ -1,6 +1,6 @@
 </head>
 
-<body class="md-skin">
+<body class="fixed-sidebar pace-done">
 <div id="wrapper">
 
     <nav class="navbar-default navbar-static-side" role="navigation">
