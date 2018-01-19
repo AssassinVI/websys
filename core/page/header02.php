@@ -174,21 +174,27 @@ function bar_tree_tb($Tb_index, $Mod_code, $MT_Name, $is_data) {
                         <?php
 
 // --------------------------------- 語系 ------------------------------
-// $pdo = pdo_conn();
-// $sql = $pdo->prepare("SELECT Lang_name, Lang_code FROM sysLang WHERE is_use='1'");
-// $sql->execute();
+$pdo = pdo_conn();
+$sql = $pdo->prepare("SELECT Lang_name, Lang_code FROM sysLang WHERE is_use='1'");
+$sql->execute();
 
-// echo '<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">';
-// echo '   <i class="fa fa-globe"></i>  <span class="label label-warning">' . $sql->rowcount() . '</span>';
-// echo '</a>';
-// echo '<ul class="dropdown-menu dropdown-messages">';
+echo '<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">';
+echo '   <i class="fa fa-globe"></i>  <span class="label label-warning">' . $sql->rowcount() . '</span>';
+echo '</a>';
+echo '<ul class="dropdown-menu dropdown-messages">';
 
-// while ($lang = $sql->fetch(PDO::FETCH_ASSOC)) {
-// 	echo "<li><a href='?lang=" . $lang['Lang_code'] . "'>" . $lang['Lang_name'] . "</a></li>";
-// }
-// $pdo = NULL;
+while ($lang = $sql->fetch(PDO::FETCH_ASSOC)) {
+	
+     if ($weblang==$lang['Lang_code']) {
+       echo "<li><p class='active_lang'>" . $lang['Lang_name'] . "</p></li>";
+    }
+    else{
+        echo "<li><a href='?lang=" . $lang['Lang_code'] . "'>" . $lang['Lang_name'] . "</a></li>";
+    }
+}
+$pdo = NULL;
 
-// echo '</ul>';
+echo '</ul>';
 ?>
 
                     </li>

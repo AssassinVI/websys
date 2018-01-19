@@ -1,6 +1,8 @@
-<?php
-include "../../core/page/header01.php"; //載入頁面heaer01
-include "../../core/page/header02.php"; //載入頁面heaer02?>
+<?php include "../../core/page/header01.php"; //載入頁面heaer01?>
+ <style type="text/css">
+     #table_id_example{  }
+ </style>
+<?php include "../../core/page/header02.php"; //載入頁面heaer02?>
 <?php
 
 if ($_GET) {

@@ -33,6 +33,8 @@ $company = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
      <link rel="stylesheet" type="text/css" href="../../js/plugins/fancyBox/jquery.fancybox.css">
 
      <style type="text/css">
+       .active_lang{ padding: 6px 20px; margin: 2px; font-size: 14px; background: #1690d8; color: #fff;}
+       
        #cLogo{ color: #0e9aef; }
         body.skin-1{ background: #1e2c42; }
         .skin-1 .nav > li > a{ color: #e1e1e1; }
@@ -59,4 +61,6 @@ $company = pdo_select("SELECT * FROM company_base WHERE webLang='tw'", 'no');
         .page{ font-size: 18px; text-align: center; padding: 10px 0px;}
         .page span{ padding: 2px 8px; margin-left: 3px; background: #009587; color: #fff; }
         .page a{ padding: 2px 8px; color: #009688; margin-left: 3px; border: 1px solid #e1e1e1; }
+
+        /* -- DataTable --*/
      </style>
