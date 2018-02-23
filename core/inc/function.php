@@ -324,4 +324,74 @@ function test_file($file)
   }
 }
 
+
+
+// ---------------------------------------------- MENU套後台樣板 ------------------------------------------
+function pdo_navbar($Tb_index)
+{  
+
+  $pdo=pdo_conn();
+  
+  // ----------------------- 第一層 ------------------------------
+  if(empty($Tb_index)){
+      $sql=$pdo->prepare("SELECT * FROM maintable WHERE parent_id='' AND isTopbar='1' AND OnLineOrNot='1' ORDER BY OrderBy DESC, Tb_index ASC");
+      $sql->execute();
+      while ($row_nav=$sql->fetch(PDO::FETCH_ASSOC)) {
+
+          // -- 資料夾 --
+         if ($row_nav['is_data']=='0') {
+            // -- 依實際HTML修改 --
+            echo '
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">'.$row_nav['MT_Name'].' <span class="caret"></span></a>
+               <ul class="dropdown-menu">';
+            
+             pdo_navbar($row_nav['Tb_index']);
+
+            echo '
+              </ul>
+             </li>';
+         }
+         // -- 資料 --
+         else{
+            // -- 依實際HTML修改 --
+            echo '
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="'.$row_nav['use_web'].'">'.$row_nav['MT_Name'].' </a>
+            </li>';
+         }
+      } 
+   }
+
+   // ------------------------- 其他層 -------------------------------
+   else{
+      $sql=$pdo->prepare("SELECT * FROM maintable WHERE parent_id=:parent_id AND isTopbar='1' AND OnLineOrNot='1' ORDER BY OrderBy DESC, Tb_index ASC");
+      $sql->execute(['parent_id'=>$Tb_index]);
+      while ($row_nav=$sql->fetch(PDO::FETCH_ASSOC)){
+
+          // -- 資料夾 --
+         if ($row_nav['is_data']=='0'){
+          // -- 依實際HTML修改 --
+          echo '
+            <li class="sub-menu"><a href="javascript:void(0);">'.$row_nav['MT_Name'].' <span class="caret"></span></a>
+               <ul class="dropdown-menu">';
+
+               pdo_navbar($row_nav['Tb_index']);
+           
+          echo'
+               </ul>
+            </li>';
+
+         }
+         // -- 資料 --
+         else{
+           // -- 依實際HTML修改 --
+           echo '<li><a href="'.$row_nav['use_web'].'">'.$row_nav['MT_Name'].'</a></li>';
+         }
+      }
+   }
+   
+   $pdo=NULL;
+}
+
 ?>
