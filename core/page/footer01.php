@@ -103,6 +103,46 @@ if ($('#ckeditor').length>0) {
                  $(html_id).html('');
              }
              else{
+                
+                var file_name=controller.value.split('\\');
+                var type=file_name[2].split('.');
+                var re = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
+                
+                if (re.exec(file_name[2])) {
+
+                     var fileReader= new FileReader();
+                     fileReader.readAsDataURL(file[i]);
+                     fileReader.onload = function(event){
+
+                     //$(html_id).attr('src', this.result);
+                     var result=this.result;
+
+                      var html_txt='<div id="img_div" >';
+                      html_txt=html_txt+'  <img id="one_img" src="'+result+'" alt="請上傳代表圖檔">';
+                      html_txt=html_txt+'</div>';
+
+                   $(html_id).append(html_txt);
+                  }
+                    
+                  }else{
+                    alert('請上傳圖片檔');
+                    controller.value='';
+                  }
+            }
+          }
+}
+
+ /* ========================== 預覽檔案方法 ============================= */
+ function file_load_new(controller,html_id) {
+            $(html_id).html('');
+            var file=controller.files;
+            for (var i = 0; i < file.length; i++) {
+
+             if (file[i]==null) {
+
+                 $(html_id).html('');
+             }
+             else{
                 var fileReader= new FileReader();
                 fileReader.readAsDataURL(file[i]);
                 fileReader.onload = function(event){
@@ -126,7 +166,6 @@ if ($('#ckeditor').length>0) {
              }
             }
           }
-
 }
 
 /*  */

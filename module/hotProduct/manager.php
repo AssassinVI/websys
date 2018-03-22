@@ -258,7 +258,7 @@ if ($_GET) {
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="OtherFile">相關圖檔上傳</label>
 							<div class="col-md-10">
-								<input type="file" multiple name="OtherFile[]" class="form-control" id="OtherFile" onchange="file_viewer_load_new(this, '#other_div', 'manager.php', 'OtherFile')">
+								<input type="file" multiple name="OtherFile[]" class="form-control" id="OtherFile" onchange="file_load_new(this, '#other_div', 'manager.php', 'OtherFile')">
 							</div>
 						</div>
 
