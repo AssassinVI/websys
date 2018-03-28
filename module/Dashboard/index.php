@@ -54,7 +54,7 @@ if ($_GET) {
                             <table class="table table-striped">
                                 <thead>
                                   <th>#</th>  
-                                  <th>電話</th>  
+                                  <th>編號</th>  
                                   <th>E-mail</th> 
                                   <th>姓名</th>  
                                   <th>訊息</th>   
@@ -69,8 +69,8 @@ if ($_GET) {
                                     <tr>
                                         <td><?php echo $i?></td>
                                         
-                                        <td nowrap><?php echo $row['UserPhone']?></td>
-                                        <td><a href="mailto:<?php echo $row['UserMail']?>"><i class="fa fa-envelope text-navy"></i></a></td>
+                                        <td nowrap><a href="../msg/manager.php?MT_id=<?php echo $row['mt_id'];?>&Tb_index=<?php echo $row['Tb_index'];?>"><?php echo $row['Tb_index']?></a> </td>
+                                        <td><a href="mailto:<?php echo $row['UserMail']?>"><?php echo $row['UserMail']?></a></td>
                                         <td nowrap><?php echo $row['UserName']?></td>
                                         <td>
                                           <?php echo $row['UserMsg']?>
