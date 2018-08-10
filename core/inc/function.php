@@ -278,6 +278,94 @@ function GOOGLE_recaptcha($secretKey, $recaptcha_response, $location)
 
 
 
+//--------------------------- 縮圖程式 -------------------------
+function ecstart_convert_jpeg($src_file,$dst_file,$text_type,$text_image,$watermark_type,$watermark_image,$pic_width,$pic_height){
+
+//$src_file 來源圖片路徑
+//$dst_file 存檔圖片路徑
+//$text_type 是否插入文字
+//$text_image 插入的文字內容
+//$watermark_type 是否插入浮水印
+//$watermark_image 圖水印圖片路徑
+//$pic_width 存檔圖片寬度
+//$pic_height 存檔圖片高度
+$image = imagecreatefromjpeg($src_file) ;
+$s_width = imagesx($image);
+$s_height = imagesy($image);
+
+
+// 縮圖大小
+$thumb = imagecreatetruecolor($pic_width, $pic_height);
+// 自動縮圖
+imagecopyresized($thumb, $image, 0, 0, 0, 0, $pic_width, $pic_height, $s_width, $s_height);
+//imagejpeg($thumb,"/tmp/tmpfile.jpg","100");
+//$thumbimage = imagecreatefromjpeg("/tmp/tmpfile.jpg") ;
+
+
+// 取得寬度
+$i_width = imagesx($thumb);
+$i_height = imagesy($thumb);
+
+//imagejpeg($image,"/home/www/ecstart.com/public_html/cart/test.jpg","100");
+//imagejpeg($image);
+
+// 計算 插入文字出現位置
+$ywpos = $i_height - 35 ;
+// 設定 插入文字
+$textcolor = imagecolorallocate($thumb, 250, 250, 250);
+
+// 插入文字
+if($text_type == "Y"){
+imagestring($thumb, 5, 25, $ywpos, $text_image, $textcolor);
+}
+// 載入浮水印圖
+$w_image = imagecreatefromjpeg($watermark_image) ;
+// 取出浮水印圖 寬 與 高
+$w_width = imagesx($w_image);
+$w_height = imagesy($w_image);
+// 計算 浮水印出現位置
+$xpos = $i_width - $w_width -20 ;
+$ypos = $i_height - $w_height-20 ;
+
+//結合浮水印
+if($watermark_type == "Y"){
+imagecopy($thumb,$w_image,$xpos,$ypos,0,0,$w_width,$w_height);
+}
+
+imagejpeg($thumb,$dst_file,"100");
+
+
+imagedestroy($thumb);
+imagedestroy($image);
+imagedestroy($w_image);
+}
+
+
+
+//--- 亂碼產生器 ----
+function randTXT($num)
+{
+ 
+  //$random預設為10，更改此數值可以改變亂數的位數----(程式範例-PHP教學)
+$random=empty($num) ? 10:$num ;
+//FOR回圈以$random為判斷執行次數
+for ($i=1;$i<=$random;$i=$i+1)
+{
+//亂數$c設定三種亂數資料格式大寫、小寫、數字，隨機產生
+$c=rand(1,3);
+//在$c==1的情況下，設定$a亂數取值為97-122之間，並用chr()將數值轉變為對應英文，儲存在$b
+if($c==1){$a=rand(97,122);$b=chr($a);}
+//在$c==2的情況下，設定$a亂數取值為65-90之間，並用chr()將數值轉變為對應英文，儲存在$b
+if($c==2){$a=rand(65,90);$b=chr($a);}
+//在$c==3的情況下，設定$b亂數取值為0-9之間的數字
+if($c==3){$b=rand(0,9);}
+//使用$randoma連接$b
+$randoma=$randoma.$b;
+}
+//輸出$randoma每次更新網頁你會發現，亂數重新產生了
+return $randoma;
+}
+
 
 //-------------------------------- 驗證 input 排除特殊符號 ---------------------------------------------
 function test_input($GET)
@@ -322,6 +410,44 @@ function test_file($file)
   }else{
     return false;
   }
+}
+
+
+//---------------------------------------- 判斷手機 --------------------------------------------
+function check_mobile(){
+    $regex_match="/(nokia|iphone|android|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|";
+    $regex_match.="htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|";
+    $regex_match.="blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|";
+    $regex_match.="symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|";   
+    $regex_match.="jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220";
+    $regex_match.=")/i";
+    return preg_match($regex_match, strtolower($_SERVER['HTTP_USER_AGENT']));
+}
+
+
+//---------------------------------------- 判斷手機AND平板 --------------------------------------------
+function wp_is_mobile() {
+  static $is_mobile = null;
+ 
+  if ( isset( $is_mobile ) ) {
+    return $is_mobile;
+  }
+ 
+  if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
+    $is_mobile = false;
+  } elseif ( strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false // many mobile devices (all iPhone, iPad, etc.)
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
+    || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false ) {
+      $is_mobile = true;
+  } else {
+    $is_mobile = false;
+  }
+ 
+  return $is_mobile;
 }
 
 
